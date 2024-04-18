@@ -11,6 +11,9 @@ import {CreateEvent} from "./routes/CreateEvent";
 import {RSVP} from "./routes/RSVP";
 import {Help} from "./routes/Help";
 import {Profile} from "./routes/Profile";
+import { Success } from "./routes/Success";
+import { MyRsvps } from "./routes/MyRsvps";
+import { MyEvents } from "./routes/MyEvents";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +48,18 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "success",
+        element: <Success />,
+      },
+      {
+        path: "my-rsvps",
+        element: <MyRsvps />,
+      },
+      {
+        path: "my-events",
+        element: <MyEvents />,
       },
     ],
   },

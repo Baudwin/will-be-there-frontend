@@ -12,8 +12,8 @@ export function Navigation() {
   const navigate = useNavigate();
 
   return (
-    <div className={`navbar shadow-lg z-10 fixed`}>
-      <nav className="h-20 lg:h-24 w-screen wrapper bg-transparent" id="top">
+    <div className={`navbar shadow z-10 sticky top-0`}>
+      <nav className="h-20 px-10 lg:h-20  bg-transparent" id="top">
         <ul className="flex justify-between items-center">
           <li className="lg:pb-4">
             <Link to={`/`}>
@@ -61,12 +61,12 @@ export function Navigation() {
       </nav>
 
       {open && (
-        <div className="mobile-menu-overlay fixed lg:hidden z-20 top-0 right-0 bottom-0 left-0 w-screen leading-10 wrapper">
+        <div className="mobile-menu-overlay px-10 fixed lg:hidden z-20 top-0 right-0 bottom-0 left-0 w-screen leading-10 ">
           <GrClose
             onClick={toggleMenu}
             size={40}
             color="green"
-            className="z-20 cursor-pointer ml-auto mt-7 mr-2"
+            className="z-20 cursor-pointer ml-auto mt-3"
           />
           <ul className="py-1 mt-10 mb-8 justify-center">
             <li className="rsvp">

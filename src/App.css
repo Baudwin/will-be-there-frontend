@@ -34,14 +34,14 @@ li {
   list-style-type: none;
 }
 
-.wrapper {
+/* .wrapper {
   display: grid;
   grid-template-columns:
     1fr
     min(100ch, calc(100% - 64px))
     1fr;
   grid-column-gap: 32px;
-}
+} */
 
 .wrapper > * {
   grid-column: 2;
@@ -61,7 +61,7 @@ li {
 .mobile-menu-overlay {
   overflow: hidden;
   touch-action: none;
-  background-image: url("./assets/background/big-balloon-border.jpg");
+  background-image: url("./public/background/big-balloon-border.jpg");
   background-size: cover;
 }
 
