@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "Hind Guntur Light";
+  src: url(../fonts/HindGunturLight.woff) format("woff");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hind Guntur";
+  src: url(../fonts/HindGuntur.woff) format("woff");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hind Guntur Medium";
+  src: url(../fonts/HindGunturMedium.woff) format("woff");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hind Guntur Bold";
+  src: url(../fonts/HindGunturBold.woff) format("woff");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hind Guntur SemiBold";
+  src: url(../fonts/HindGunturSemiBold.woff) format("woff");
+  font-style: normal;
+}
