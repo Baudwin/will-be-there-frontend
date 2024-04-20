@@ -1,4 +1,4 @@
-import { FaEnvelope, FaInstagram, FaMobile, FaPhoneAlt, FaYoutube } from "react-icons/fa";
+import { FaEnvelope, FaInstagram, FaMobile, FaYoutube } from "react-icons/fa";
 
 export function Footer() {
   return (
