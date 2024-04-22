@@ -2,6 +2,7 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export function Profile() {
+  
   return <div className=" py-10 bg-n bg- w-full bg-contain h-screen bg-[url('background/big-balloon-border.jpg')] ">
   {/* <img src="background/big-balloon-border.jpg" alt="" /> */}
   <div className="container sm:px-7 ">
