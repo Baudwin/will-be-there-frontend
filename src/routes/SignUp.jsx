@@ -27,7 +27,7 @@ export function SignUp() {
 
 
   return (
-    <div className='py-10'>
+    <div className="py-10 bg-cover w-screen bg-[url('background/big-balloon-border.jpg')]">
       <div className='container space-y-5 lg:w-1/3 md:w-1/2 sm:px-7 m-auto'>
  <h1 className='font-bold text-2xl text-center py-6'>Lets get started!</h1>
 
@@ -36,17 +36,17 @@ export function SignUp() {
 
  <div className="border border-green-900 rounded-2xl flex items-center gap-3 px-3 py-2">
   <FaUserAlt className="text-green-800 mb-1"/>
-<input onChange={handleChange} className="w-full focus:outline-none" placeholder="Username" type="text" value={userInfo.username} name="username" id="username" />    
+<input onChange={handleChange} className="w-full focus:outline-none bg-inherit  font-bold" placeholder="Username" type="text" value={userInfo.username} name="username" id="username" />    
 </div>
 
  <div className="border border-green-900 rounded-2xl flex items-center gap-3 px-3 py-2">
   <FaEnvelope className="text-green-800 mb-1"/>
-<input onChange={handleChange} className="w-full focus:outline-none" placeholder="Email" type="text" value={userInfo.email} name="email" id="email" />    
+<input onChange={handleChange} className="w-full focus:outline-none bg-inherit" placeholder="Email" type="text" value={userInfo.email} name="email" id="email" />    
 </div>
 
 <div className="border border-green-900 rounded-2xl items-center flex gap-3 px-3 py-2">
 <FaLock className="text-green-800 mb-1.5"/>
-<input onChange={handleChange} className="w-full focus:outline-none" placeholder="Password" type={showPassword?"password" : "text"} value={userInfo.password} name="password" id="pass" /> 
+<input onChange={handleChange} className="w-full focus:outline-none bg-inherit" placeholder="Password" type={showPassword?"password" : "text"} value={userInfo.password} name="password" id="pass" /> 
  <span className=" cursor-pointer" onClick={()=>setShowPassword(!showPassword)}> { showPassword ? <FaRegEye className="" size={21}/> : <FaRegEyeSlash className="" size={21}/>}   </span> 
 </div>
 
