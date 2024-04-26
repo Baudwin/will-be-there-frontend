@@ -12,7 +12,7 @@ export function ErrorPage() {
         id="error-page"
         className="w-full h-screen place-content-center text-center wrapper error-page -mt-12"
       >
-        <h1 className="text-3xl tracking-tight font-lt">
+        <h1 className="lg:text-3xl text-2xl tracking-tight font-lt">
           Something went wrong.
         </h1>
         <p className="text-sm text-green-900 pt-3">

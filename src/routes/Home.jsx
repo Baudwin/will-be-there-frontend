@@ -1,17 +1,18 @@
+import {Footer} from "../components/Footer";
 import {Hero} from "../components/Hero";
+import {SectionFour} from "../components/SectionFour";
 import {SectionOne} from "../components/SectionOne";
-import {SectionRSVP} from "../components/SectionRSVP";
 import {SectionThree} from "../components/SectionThree";
 import {SectionTwo} from "../components/SectionTwo";
 
 export function Home() {
   return (
-    <div className="mt-40">
+    <div className="">
       <Hero />
       <SectionOne />
       <SectionTwo />
       <SectionThree />
-      <SectionRSVP />
+      <SectionFour />
     </div>
   );
 }

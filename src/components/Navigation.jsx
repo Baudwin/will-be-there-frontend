@@ -12,16 +12,15 @@ export function Navigation() {
   const navigate = useNavigate();
 
   return (
-    <div className={`navbar shadow z-10 sticky top-0`}>
-      <nav className="h-20 px-10 lg:h-20  bg-transparent" id="top">
+    <div className={`navbar shadow-lg z-10 sticky bg-white full-bleed`}>
+      <nav className="h-20 w-screen px-10 flex justify-between" id="top">
+        <div className="mt-4 lg:mt-1">
+          <Link to={`/`}>
+            <Logo />
+          </Link>
+        </div>
         <ul className="flex justify-between items-center">
-          <li className="lg:pb-4">
-            <Link to={`/`}>
-              <Logo />
-            </Link>
-          </li>
-
-          <div className="lg:flex hidden gap-4">
+          <div className="lg:flex hidden gap-5">
             <li>
               <Link to={`rsvp`} className="uppercase font-medi">
                 RSVP
@@ -34,7 +33,7 @@ export function Navigation() {
             </li>
             <li>
               <button
-                className="w-28 h-8 pt-1 -mt-2 text-sm bg-green-900 text-white font-medi border border-green-900 rounded-xl hover:bg-white hover:text-green-950 uppercase"
+                className="w-28 h-8 pt-1 -mt-2 text-sm bg-green-900 text-white font-medi hover:shadow-lg rounded-xl hover:bg-white hover:text-green-950 uppercase"
                 onClick={() => navigate("/login")}
               >
                 Login
@@ -53,9 +52,9 @@ export function Navigation() {
           </div>
           <div
             onClick={() => setOpen(!open)}
-            className="lg:hidden visible z-20 cursor-pointer"
+            className="lg:hidden visible z-10 cursor-pointer"
           >
-            <FiMenu size={50} className=" pt-2" />
+            <FiMenu size={50} className="mt-1 pt-3" />
           </div>
         </ul>
       </nav>
@@ -66,7 +65,7 @@ export function Navigation() {
             onClick={toggleMenu}
             size={40}
             color="green"
-            className="z-20 cursor-pointer ml-auto mt-3"
+            className="z-20 cursor-pointer ml-auto mt-6"
           />
           <ul className="py-1 mt-10 mb-8 justify-center">
             <li className="rsvp">

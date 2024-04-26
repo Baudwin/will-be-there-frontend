@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom/client";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import "./index.css";
@@ -11,18 +11,18 @@ import {CreateEvent} from "./routes/CreateEvent";
 import {RSVP} from "./routes/RSVP";
 import {Help} from "./routes/Help";
 import {Profile} from "./routes/Profile";
-import { Success } from "./routes/Success";
-import { MyRsvps } from "./routes/MyRsvps";
-import { MyEvents } from "./routes/MyEvents";
-import {ToastContainer, Zoom} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import {Success} from "./routes/Success";
+import {MyRsvps} from "./routes/MyRsvps";
+import {MyEvents} from "./routes/MyEvents";
+import {ToastContainer, Zoom} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
+import {MoreEvent} from "./components/MoreEvent";
+import {MoreRSVP} from "./components/MoreRSVP";
 
-
-
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -70,19 +70,32 @@ const router = createBrowserRouter([
         path: "my-events",
         element: <MyEvents />,
       },
+      {
+        path: "success",
+        element: <Success />,
+      },
+      {
+        path: "more-event",
+        element: <MoreEvent />,
+      },
+      {
+        path: "more-rsvp",
+        element: <MoreRSVP />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} /> 
-      <ToastContainer autoClose={2500} pauseOnFocusLoss={false}  hideProgressBar={false} />
-      <ReactQueryDevtools initialIsOpen={false} position='bottom-right'/>
+      <RouterProvider router={router} />
+      <ToastContainer
+        autoClose={2500}
+        pauseOnFocusLoss={false}
+        hideProgressBar={false}
+      />
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
-
-
   </React.StrictMode>
 );
