@@ -12,7 +12,7 @@ export const registerUser = ()=>{
 
     return useMutation ({
         mutationFn : (userInfo)=>{
-            return axios.post("http://localhost:3001/register", userInfo)
+            return axios.post("https://will-be-there-api.vercel.app/register", userInfo)
         },
         onError : (error)=>{
             toast.error(error.response.data)
@@ -21,7 +21,7 @@ export const registerUser = ()=>{
             login(data.data.userInfo)
             toast.success(data.data.msg)
             setTimeout(() => {
-                navigate("/")
+                navigate("/profile")
             }, 3000);
             
         }
@@ -35,7 +35,7 @@ export const loginUser = ()=>{
 
     return useMutation ({
         mutationFn : (userInfo)=>{
-            return axios.post("http://localhost:3001/signin", userInfo)
+            return axios.post("https://will-be-there-api.vercel.app/signin", userInfo)
         },
         onError : (error)=>{
             toast.error(error.response.data)

@@ -1,8 +1,10 @@
 import {useState} from "react";
+import { createNewEvent } from "../hooks/useEventData";
 
 export function CreateEvent() {
+  const {mutate, isPending, isError,error} = createNewEvent()
   const [img, setImg] = useState("");
-  const [eventInfo, setItemInfo] = useState({
+  const [eventInfo, setEventInfo] = useState({
     eventName: "",
     date: "",
     time: "",
@@ -10,16 +12,31 @@ export function CreateEvent() {
     location: "",
   });
 
+  const handleChange = (e)=>{
+    const {name,value} = e.target
+    setEventInfo({...eventInfo, [name]:value})
+  }
+
+  const handleImageChange = (e)=>{
+    const {files} = e.target
+     setImg(files[0]);
+  }
+
   const formData = new FormData();
   formData.append("img", img);
-  formData.append("eventName", eventInfo.itemName);
+  formData.append("eventName", eventInfo.eventName);
   formData.append("date", eventInfo.date);
   formData.append("time", eventInfo.time);
   formData.append("description", eventInfo.description);
   formData.append("location", eventInfo.location);
 
+  const createEvent = (e)=>{
+  mutate(formData)
+      }
+
+    
   return (
-    <div className="pt-12 px-5 md:px-16 bg-cover w-screen h-screen offwhite">
+    <div className="pt-12 sm:px-5 md:px-16 bg-cover w-screen h-screen bg-[url('/background/big-balloon-border.jpg')]">
       <div className="wrapper">
         <h1 className="text-center lg:text-3xl text-2xl font-bold pb-6">
           Create Your Event
@@ -30,11 +47,11 @@ export function CreateEvent() {
             <label className="font-lt text-gray-500" htmlFor="guest">
               Event name
             </label>
-            <input
+            <input  onChange = {handleChange}
               className="border-b-2 border-gray-400 bg-inherit focus:outline-none w-full"
               placeholder=""
               type="text"
-              name="guest"
+              name="eventName"
               id="guest"
               required
             />
@@ -45,7 +62,7 @@ export function CreateEvent() {
               <label className=" font-lt text-gray-500" htmlFor="date">
                 Date <span className="text-green-800 text-xl">*</span>
               </label>
-              <input
+              <input onChange = {handleChange}
                 className="border-b-2 border-gray-400 bg-inherit focus:outline-none w-full text-xl text-gray-300"
                 placeholder=""
                 type="date"
@@ -59,7 +76,7 @@ export function CreateEvent() {
               <label className=" font-lt text-gray-500" htmlFor="time">
                 Time <span className="text-green-800 text-xl ">*</span>
               </label>
-              <input
+              <input onChange = {handleChange}
                 className="border-b-2 border-gray-400 bg-inherit focus:outline-none w-full text-xl text-gray-300"
                 placeholder=""
                 type="time"
@@ -74,7 +91,7 @@ export function CreateEvent() {
             <label className="font-lt text-gray-500" htmlFor="guest">
               Description
             </label>
-            <textarea
+            <textarea onChange = {handleChange}
               className="border-2 p-2 bg-inherit border-gray-400 w-full h-16 focus:outline-none"
               name="description"
               id="description"
@@ -87,7 +104,7 @@ export function CreateEvent() {
             <label className="font-lt text-gray-500" htmlFor="guest">
               Location
             </label>
-            <input
+            <input onChange = {handleChange}
               className="border-b-2 border-gray-400 bg-inherit focus:outline-none w-full"
               placeholder=""
               type="location"
@@ -97,19 +114,24 @@ export function CreateEvent() {
             />
           </div>
 
-          <div className="flex gap-6">
-            <span className="font-lt text-gray-500 self-center">
+          <div className="flex items-center sm:flex-col gap-6">
+            <div className="space-x-5">
+                 <span className="font-lt text-gray-500 self-center">
               Event Image
             </span>
 
-            <button className="hover:text-green-950 hover:bg-white text-sm text-gray-500 uppercase px-10 py-2 border border-gray-500 rounded">
-              upload
-            </button>
+            <label className="hover:text-green-950 cursor-pointer hover:bg-white text-sm text-gray-500 uppercase px-10 py-2 border border-gray-500 rounded" htmlFor="img">Upload</label>
+            <input hidden onChange={handleImageChange} type="file" name="image" id="img" />
+   
+            </div> 
+          { img?<img className='h-44 w-48 sm:h-36 sm:w-36 object-cover' src={URL.createObjectURL(img)} alt="" />  :null   }  
+      
           </div>
+         
 
           {/* submit button  */}
           <div className="flex justify-center pt-3">
-            <button className="bg-green-900 hover:text-green-900 hover:bg-white text-white uppercase px-20 py-2 font-bold shadow-lg rounded-2xl">
+            <button onClick={createEvent} className="bg-green-900 hover:text-green-900 hover:bg-white text-white uppercase px-20 py-2 font-bold shadow-lg rounded-full">
               Submit
             </button>
           </div>

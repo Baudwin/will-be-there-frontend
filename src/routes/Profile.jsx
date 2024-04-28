@@ -1,48 +1,87 @@
 import {FaCalendarAlt, FaPlane} from "react-icons/fa";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useAuthStore} from "../../store/useAuthStore";
 import {format} from "date-fns";
+import { useState } from "react";
+import {ClipLoader} from 'react-spinners'
 
 export function Profile() {
+  const [showLoading, setShowLoading] = useState(false)
   const user = useAuthStore((state) => state.user);
+  const logout = useAuthStore((state=>state.logout))
+  const navigate = useNavigate()
+
 
   return (
-    <div className=" sm:px-5 md:px-7 py-10 w-full bg-contain h-screen bg-[url('background/big-balloon-border.jpg')] ">
+    <>
+{
+
+showLoading? 
+
+<div className='fixed inset-0 flex justify-center flex-col gap-2 items-center bg-gray-900 bg-opacity-90 z-50'>
+        
+          <ClipLoader
+          className='loader'
+          size={60}
+          color=""
+          />
+          <p className="text-white text-2xl">Logging out</p>
+      </div>
+
+: 
+null
+}
+    <div className=" sm:px-5 md:px-7 lg:px-5 py-10 w-full bg-cover h-screen bg-[url('/background/big-balloon-border.jpg')] ">
+      
       <div className="container sm:px-7 ">
         <div className="flex items-center gap-4">
           <span className="bg-black px-14 rounded py-8 border-4 border-white">
-            {" "}
+          {""}
             <span className="font-bold text-5xl text-white">
-              {(user?.username).substring(0, 1)}
+              {user? (user?.username).substring(0, 1):null}
             </span>
           </span>
           <div>
             <h1 className="font-bold text-2xl">{user?.username}</h1>
             <p className="text-blue-700">{user?.email}</p>
-          </div>
-        </div>
-        <p className="py-3 font-medium text-gray-600">
-          Created on{" "}
+            <p className=" font-medium text-gray-600">
+          Joined {" "}
           <span className="font-semibold">
-            {format(new Date(user?.createdOn), "MMMM d, yyyy")}
+            { user? format(new Date(user?.createdOn), "MMMM d, yyyy"): null}
           </span>{" "}
         </p>
+          </div>
+        </div>
+       
 
-        <div className="py-20 space-y-2">
-          <div className="flex items gap-2">
+        <div className="py-10 space-y-2">
+          <div  className="flex items gap-2">
             <FaCalendarAlt />
-            <Link>My Events</Link>
+            <Link className="hover:text-blue-500 hover:font-bold" to={'/my-events'}>My Events</Link>
           </div>
           <div className="flex items gap-2">
             <FaCalendarAlt />
-            <Link>Create Event</Link>
+            <Link  className="hover:text-blue-500 hover:font-bold" to={'/create-event'}>Create Event</Link>
           </div>
           <div className="flex items gap-2">
             <FaPlane />
-            <Link>My RSVPs</Link>
+            <Link to={'/my-rsvps'} className="hover:text-blue-500 hover:font-bold" >My RSVPs</Link>
           </div>
         </div>
+
+
+
+<button onClick={()=>{
+  logout()
+  setShowLoading(true)
+  setTimeout(() => {
+    navigate(`/login`)
+  }, 3000);
+}} className="bg-red-500 hover:bg-white hover:text-black hover:border hover:border-red-500 text-white font-bold px-10 py-3 rounded-full shadow">Logout</button>
       </div>
     </div>
-  );
+
+        
+    </>
+  )
 }

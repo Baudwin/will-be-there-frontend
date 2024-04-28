@@ -5,8 +5,10 @@ import {Link, useNavigate} from "react-router-dom";
 import {Logo} from "../utils/Logo";
 import {GrClose} from "react-icons/gr";
 import {FiMenu} from "react-icons/fi";
+import { useAuthStore } from "../../store/useAuthStore";
 
 export function Navigation() {
+  const user = useAuthStore((state=>state.user))
   const [open, setOpen] = useState(false);
   const toggleMenu = () => setOpen(!open);
   const navigate = useNavigate();
@@ -22,16 +24,16 @@ export function Navigation() {
         <ul className="flex justify-between items-center">
           <div className="lg:flex hidden gap-5">
             <li>
-              <Link to={`rsvp`} className="uppercase font-medi">
+              <Link to={`rsvp/7`} className="uppercase font-medi">
                 RSVP
               </Link>
             </li>
             <li>
-              <Link to={`create-event`} className="uppercase font-medi">
+              <Link to={ user? `create-event`:`login`} className="uppercase font-medi">
                 Create Event
               </Link>
             </li>
-            <li>
+            <li className={`${user?"hidden": null}`} >
               <button
                 className="w-28 h-8 pt-1 -mt-2 text-sm bg-green-900 text-white font-medi hover:shadow-lg rounded-xl hover:bg-white hover:text-green-950 uppercase"
                 onClick={() => navigate("/login")}
@@ -40,7 +42,7 @@ export function Navigation() {
               </button>
             </li>
             <li className="icon">
-              <Link to={`profile`}>
+              <Link to={ user ? `profile` : `login`}>
                 <IoPersonOutline size={21} />
               </Link>
             </li>
@@ -52,7 +54,7 @@ export function Navigation() {
           </div>
           <div
             onClick={() => setOpen(!open)}
-            className="lg:hidden visible z-10 cursor-pointer"
+            className="lg:hidden xl:hidden 2xl:hidden visible z-10 cursor-pointer"
           >
             <FiMenu size={50} className="mt-1 pt-3" />
           </div>
@@ -60,7 +62,7 @@ export function Navigation() {
       </nav>
 
       {open && (
-        <div className="mobile-menu-overlay px-10 fixed lg:hidden z-20 top-0 right-0 bottom-0 left-0 w-screen leading-10 ">
+        <div className="mobile-menu-overlay px-10 fixed lg:hidden  z-20 top-0 right-0 bottom-0 left-0 w-screen leading-10 ">
           <GrClose
             onClick={toggleMenu}
             size={40}

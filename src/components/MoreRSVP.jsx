@@ -1,31 +1,45 @@
 import {BsClockFill} from "react-icons/bs";
 import {FaCheck} from "react-icons/fa";
-import {FaLocationDot} from "react-icons/fa6";
+import {FaLocationDot, FaX} from "react-icons/fa6";
 import {IoMdCalendar} from "react-icons/io";
 
-export function MoreRSVP() {
+export function MoreRSVP({closePopup, rsvp}) {
   return (
-    <div className="wrapper mt-28 shadow-lg border p-2 mx-auto w-96">
-      <div className="w-full h-96 space-y-2 pt-6">
+    <div className=" mt-28 bg-white shadow-lg border mx-auto w-96">
+      <div className="flex justify-end px-3 mt-2">
+         <FaX onClick={closePopup} className=" cursor-pointer" opacity={0.4} size={25}/>
+      </div>
+     
+      <div className="w-full wrapper h-fit space-y-2 pt-6">
+        
         {/* event name */}
         <div className="flex justify-between items-center">
-          <h1 className="font-bold">Sally's Graduation Party</h1>
+          <h1 className="font-bold">{rsvp.eventID.eventName}</h1>
         </div>
 
+   {/* image  */}
+              <div className="w-24 rounded-xl self-center">
+                    <img
+                      className=""
+                      src={rsvp.eventID.eventImgUrl}
+                      alt="event-img"
+                    />
+                  </div>
+                  
         <div className="flex justify-between items-center ">
           {/* location and status  */}
-          <div className="flex justify-between md:gap:28 gap-24">
+          <div className="flex justify-between md:gap:28 gap-[60px]">
             <div className="flex gap-1">
               <FaLocationDot opacity={0.6} />
               <span className="text-gray-400 text-sm tracking-tight">
-                2 Bronx Rd, NY
+              {rsvp.eventID.location}
               </span>
             </div>
-
+            
             <div className="flex gap-1">
-              <FaCheck color="green" />
+            {rsvp.attendanceStatus === "yes" ? <FaCheck color="green" />  :  <FaX color="red"/>}
               <span className="text-green-900 text-sm font-medi">
-                Attending
+              {rsvp.attendanceStatus === "yes" ? "Attending" : <span className="text-red-500">Not Attending</span> }
               </span>
             </div>
           </div>
@@ -34,8 +48,7 @@ export function MoreRSVP() {
         {/* description */}
         <div>
           <p className="text-sm text-gray-500 font-lt pt-4 pb-4">
-            Lorem, ipsum dolor sit amem harum eveniet, apres vous companions sil
-            vous plait a bien responde +44 230 2609
+          {rsvp.eventID.description}
           </p>
         </div>
 
@@ -43,11 +56,11 @@ export function MoreRSVP() {
         <div className="text-sm font-semibold text-gray-600 flex gap-4 pb-4">
           <div className="flex gap-1">
             <IoMdCalendar />
-            <span>02 Aug 2024</span>
+            <span>{rsvp.eventID.date}</span>
           </div>
           <div className="flex gap-1">
             <BsClockFill />
-            <span>2PM ECT</span>
+            <span>{rsvp.eventID.time}</span>
           </div>
         </div>
 
@@ -56,10 +69,16 @@ export function MoreRSVP() {
 
         <div className="space-y-1 pt-3 text-gray-500">
           <p className="capitalize text-sm">plus one guest names</p>
-          <p>1. </p>
-          <p>2. </p>
-          <p>3. </p>
+          {rsvp.plusOne.map((p,i)=>{
+            return <p>{i+1}. {p}</p>
+          })}
         </div>
+
+        <div className="space-y-1 pt-3 text-gray-500">
+          <p className="capitalize text-sm">additional items</p>
+         <span>- {rsvp.additionalItem}</span>
+        </div>
+
       </div>
     </div>
   );

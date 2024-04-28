@@ -21,6 +21,7 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {MoreEvent} from "./components/MoreEvent";
 import {MoreRSVP} from "./components/MoreRSVP";
+import { RsvpSuccess } from "./routes/RsvpSuccess";
 
 const queryClient = new QueryClient();
 
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
         element: <CreateEvent />,
       },
       {
-        path: "rsvp",
+        path: "rsvp/:eventId",
         element: <RSVP />,
       },
       {
@@ -71,8 +72,12 @@ const router = createBrowserRouter([
         element: <MyEvents />,
       },
       {
-        path: "success",
+        path: "event-success",
         element: <Success />,
+      },
+      {
+        path: "rsvp-success",
+        element: <RsvpSuccess />,
       },
       {
         path: "more-event",

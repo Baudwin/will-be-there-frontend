@@ -1,6 +1,6 @@
 import {FaEnvelope} from "react-icons/fa";
 import {useEffect, useState} from "react";
-import {LogoSmall} from "../utils/LogoSmall";
+// import {LogoSmall} from "../utils/LogoSmall";
 import {BsInstagram, BsYoutube} from "react-icons/bs";
 import {FaMobileScreen} from "react-icons/fa6";
 
@@ -23,9 +23,9 @@ export function Footer({date}) {
           <BsInstagram size={28} />
           <BsYoutube size={28} />
         </div>
-
+      
         <div className="flex place-content-center gap-1 mt-20">
-          <LogoSmall />
+          {/* <LogoSmall /> */}
           <span className="text-2xl text-gray-700 mt-1"> &copy; </span>
           <span className="font-medi text-lg flex self-center">{fullYear}</span>
         </div>

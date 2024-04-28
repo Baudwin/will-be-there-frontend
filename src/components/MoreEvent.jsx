@@ -49,6 +49,7 @@ export function MoreEvent() {
                 <th className="border border-gray-300">Name</th>
                 <th className="border border-gray-300">Email</th>
                 <th className="border border-gray-300">Attending</th>
+                <th className="border border-gray-300">Plus one(s)</th>
                 <th className="border border-gray-300">Items</th>
               </tr>
             </thead>
