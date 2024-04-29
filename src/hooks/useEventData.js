@@ -11,7 +11,7 @@ export const createNewEvent = ()=>{
     const user = useAuthStore((state=>state.user))
     return useMutation ({
         mutationFn : (eventInfo)=>{
-            return axios.post("http://localhost:3001/events/create-event", eventInfo,
+            return axios.post("https://will-be-there-api.vercel.app/events/create-event", eventInfo,
             {
                 headers:{
                     Authorization: `Bearer ${user.token}`
