@@ -1,4 +1,6 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import { useAuthStore } from "../../store/useAuthStore";
+import {Link, useNavigate} from "react-router-dom";
 import {
   FaEnvelope,
   FaLock,
@@ -6,13 +8,21 @@ import {
   FaRegEyeSlash,
   FaUserAlt,
 } from "react-icons/fa";
-import {Link} from "react-router-dom";
 import {registerUser} from "../hooks/useUserData";
 import {toast} from "react-toastify";
 
 export function SignUp() {
+  const user = useAuthStore((state=>state.user))
+  const navigate = useNavigate(); 
+
+  useEffect(()=>{
+    if (user) {
+      navigate("/")
+    }
+      },[])
+
+
   const {mutate, isPending, isError, error, isSuccess} = registerUser();
-  const[acceptTerms, setAcceptTerms] = useState(false)
   const[checked, setChecked] = useState(false)
 
   const [userInfo, setUserInfo] = useState({

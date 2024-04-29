@@ -5,6 +5,8 @@ import {IoMdCalendar} from "react-icons/io";
 import { getUserRsvps } from "../hooks/useRsvpData";
 import { MoreRSVP } from "../components/MoreRSVP";
 import { useState } from "react";
+import { CheckAuth } from "../components/CheckAuth";
+import { ScrollToTop } from "../components/ScrollToTop";
 
 
 export const MyRsvps = () => {
@@ -20,6 +22,9 @@ export const MyRsvps = () => {
     setShowPopUp(!showPopup)
   }
   return (
+    <> 
+ <CheckAuth/>
+<ScrollToTop/>
     <div onClick={()=>{ showPopup ?  setShowPopUp(false): null}}  className="pt-16 wrapper">
  
       <div className="">
@@ -109,5 +114,7 @@ export const MyRsvps = () => {
         </span>
       </div>
     </div>
+
+    </>
   );
 };

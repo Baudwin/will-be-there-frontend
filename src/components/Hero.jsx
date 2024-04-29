@@ -1,6 +1,6 @@
 export function Hero() {
   return (
-    <div className="offwhite pt-14">
+    <div className="offwhite lg:pt-14 xl:pt-14 md:pt-14">
       <div className="imgbg xl:w-2/5 md:w-3/5 2xl:w-2/5 lg:w-2/5 h-60 lg:h-72 xl:h-72 2xl:h-72 mb-6 shadow-lg p-1 mx-auto">
         <img
           src="/images/event.jpg"
@@ -14,20 +14,28 @@ export function Hero() {
       <p className="lg:text-2xl text-xl font-lt text-center mb-4">
         All in One Place!
       </p>
-
+     
       <div className="flex justify-center mb-2">
         <button className="customgreen text-white px-10 py-2 hover:bg-white hover:text-green-950 shadow hover:shadow-lg rounded text-lg font-reg">
           How It Works
         </button>
       </div>
 
+
       <div className="w-80 h-16 flex mx-auto relative">
-        <button className="uppercase customgreen text-white w-48 h-10 border border-green-900 rounded-full font-smbld">
+        <a href="#event">
+        <button className="uppercase hover:bg-green-800 customgreen text-white w-48 h-10 border border-green-900 rounded-full font-smbld">
           create event
         </button>
-        <button className="uppercase w-40 h-10 border border-green-900 border-l-transparent rounded-full font-smbld pl-8 absolute right-2">
+        </a>
+       
+
+        <a className="" href="#rsvp">
+    <button className="uppercase hover:text-green-900 w-40 h-10 border border-green-900 border-l-transparent rounded-full font-smbld pl-8 absolute right-2">
           rsvp
         </button>
+      </a>
+        
       </div>
 
       {/* vertical line */}

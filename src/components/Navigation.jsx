@@ -41,7 +41,7 @@ showLoading?
 null
 }
 
-    <div className={`navbar shadow-lg z-10 sticky top-0 bg-white full-bleed`}>
+    <div className={`navbar shadow-md z-10 sticky top-0 bg-white full-bleed`}>
       <nav className=" w-screen px-10 pb-2 flex justify-between items-center" id="top">
         <div className="mt-4 lg:mt-1">
           <Link to={`/`}>
@@ -128,15 +128,22 @@ null
                 </Link>
               </li>
               <li onClick={()=>{
-                  logout()
+                if(!user){
+                  navigate(`login`)
+                }else{
+
+                   logout()
                   setShowLoading(!showLoading)
                   setTimeout(() => {
                   setShowLoading(false)
                   navigate(`login`)
 
-                  }, 3000);
-              }} className={`self-center text-lg uppercase pt-2 ${user?"text-red-500":"text-blue-500"}`}>
-                <Link  onClick={toggleMenu} className="font-smbld">
+                  }, 3000)
+                 
+                }
+                
+              }} className={`self-center rounded-full border hover:bg-white px-3 shadow text-lg uppercase pt-2  ${user?"text-red-500":"text-blue-500"}`}>
+                <Link  onClick={toggleMenu} className="font-smbld ">
                   {user ? "Logout": "Login"}
                 </Link>
               </li>

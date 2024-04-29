@@ -5,7 +5,6 @@ import { useAuthStore } from "../../store/useAuthStore";
 import {useNavigate} from 'react-router-dom'
 
 
-
 export const createNewEvent = ()=>{
     const navigate = useNavigate()
     const user = useAuthStore((state=>state.user))
@@ -20,7 +19,7 @@ export const createNewEvent = ()=>{
         },
         onError : (error)=>{
             toast.error(error.response.data.msg)
-            console.log(error)
+          
         }, 
         onSuccess:(data)=>{
             navigate('/event-success')
@@ -35,7 +34,7 @@ export const createNewEvent = ()=>{
 export const getUserEvents = ()=>{
     const user = useAuthStore((state=>state.user))
     return useQuery ({
-        queryKey : ['events', user._id],
+        queryKey : ['events', user? user._id : null],
         queryFn : ()=>{
             return axios.get("https://will-be-there-api.vercel.app/events/my-events",
             {
@@ -45,11 +44,11 @@ export const getUserEvents = ()=>{
                 })
         },
         onError : (error)=>{
-            console.log(error);
+            
             toast.error(error.response.data.msg)
         }, 
         onSuccess:(data)=>{
-          console.log(data);  
+         
         }
     })
 }
@@ -62,11 +61,11 @@ export const getSingleEvent = (eventId)=>{
             return axios.get(`https://will-be-there-api.vercel.app/events/event/${eventId}`)
         },
         onError : (error)=>{
-            console.log(error);
+            
             toast.error(error.response.data.msg)
         }, 
         onSuccess:(data)=>{
-          console.log(data);
+        
             
         }
     })

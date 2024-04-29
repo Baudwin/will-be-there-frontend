@@ -1,4 +1,5 @@
 import {BsArrowDownCircle} from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export function SectionOne() {
   return (
@@ -19,11 +20,11 @@ export function SectionOne() {
         />
       </div>
 
-      <div className="flex justify-center mb-2">
-        <button className="customgreen text-white px-10 py-2 border rounded text-lg font-reg">
+      <Link to={'/signup'} className="flex justify-center mb-2">
+        <button className="customgreen hover:bg-white hover:text-black hover:border-green-950 text-white px-10 py-2 border rounded text-lg font-reg">
           Create Your Free Account
         </button>
-      </div>
+      </Link>
 
       <div className="-mt-3 flex-col w-full">
         <div className="vline border-l border-l-green-950 w-1 h-32 mx-auto"></div>

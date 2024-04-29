@@ -95,6 +95,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+    
       <ToastContainer
         autoClose={2500}
         pauseOnFocusLoss={false}

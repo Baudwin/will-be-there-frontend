@@ -16,7 +16,7 @@ export const rsvp = (eventId)=>{
         },
         onError : (error)=>{
             toast.error(error.response.data.msg)
-            console.log(error)
+            
         }, 
         onSuccess:(data)=>{
             navigate('/rsvp-success')

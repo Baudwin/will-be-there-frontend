@@ -15,7 +15,7 @@ export const CheckAuth = () => {
             navigate('/login')
            }, 3000);
         }
-    })
+    },[])
   return (
    <>
    {

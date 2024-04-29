@@ -1,4 +1,5 @@
 import {BsArrowDownCircle} from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export function SectionTwo() {
   return (
@@ -19,11 +20,11 @@ export function SectionTwo() {
         />
       </div>
 
-      <div className="flex justify-center mb-2">
-        <button className="customgreen text-white w-80 h-12 border rounded text-lg font-reg">
+      <Link to={'/create-event'} className="flex justify-center mb-2">
+        <button className="customgreen hover:bg-green-800 text-white w-80 h-12 border rounded text-lg font-reg">
           Create Your Event
         </button>
-      </div>
+      </Link>
 
       <div className="-mt-3 flex-col w-screen">
         <div className="vline border-l border-l-green-950 w-1 h-32 mx-auto"></div>

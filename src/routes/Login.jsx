@@ -1,15 +1,25 @@
+import { useAuthStore } from "../../store/useAuthStore";
+import {Link, useNavigate} from "react-router-dom";
 import {
   FaEnvelope,
   FaLock,
   FaRegEye,
   FaRegEyeSlash,
-  FaUserAlt,
 } from "react-icons/fa";
-import {Link} from "react-router-dom";
 import {loginUser} from "../hooks/useUserData";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import { ScrollToTop } from "../components/ScrollToTop";
 
 export function LogIn() {
+  const user = useAuthStore((state=>state.user))
+  const navigate = useNavigate(); 
+
+  useEffect(()=>{
+if (user) {
+  navigate("/")
+}
+  },[])
+
   const {mutate, isPending, isError, error, isSuccess} = loginUser();
 
   const [userInfo, setUserInfo] = useState({
@@ -28,6 +38,8 @@ export function LogIn() {
   };
 
   return (
+    <>
+ <ScrollToTop/>
     <div className="py-16 bg-cover w-full h-screen bg-[url('background/big-balloon-border.jpg')]">
       <div className="container space-y-5 lg:w-96 w-80 m-auto">
         <h1 className="font-bold text-2xl text-center py-6">Welcome Back!</h1>
@@ -74,22 +86,6 @@ export function LogIn() {
           </div>
         </div>
 
-        {/* agree to terms */}
-        {/* <div className="flex items-center gap-2 px-2 pt-1">
-          <div className="mt-1">
-            <input
-              className="w-4 h-4"
-              type="checkbox"
-              name="check"
-              id="check"
-            />
-          </div>
-
-          <p className="capitalize text-sm">
-            I Agree To the{" "}
-            <span className="text-green-800"> terms & conditions</span>
-          </p>
-        </div> */}
 
         {/* continue button  */}
         <div className="flex justify-center">
@@ -113,5 +109,8 @@ export function LogIn() {
         </div>
       </div>
     </div>
+
+       
+    </>
   );
 }
