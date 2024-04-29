@@ -1,5 +1,6 @@
 import {useState} from "react";
 import { createNewEvent } from "../hooks/useEventData";
+import {ClipLoader} from 'react-spinners'
 
 export function CreateEvent() {
   const {mutate, isPending, isError,error} = createNewEvent()

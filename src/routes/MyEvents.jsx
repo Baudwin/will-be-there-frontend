@@ -1,6 +1,6 @@
 import {AiFillClockCircle} from "react-icons/ai";
 import {BsClockFill, BsThreeDots} from "react-icons/bs";
-import {FaCalendar, FaLink} from "react-icons/fa";
+import {FaCalendar, FaLink, FaUsers} from "react-icons/fa";
 import {FaLocationDot} from "react-icons/fa6";
 import {IoMdCalendar} from "react-icons/io";
 import { getUserEvents } from "../hooks/useEventData";
@@ -11,15 +11,15 @@ export const MyEvents = () => {
  
   return (
   
-    <div className="pt-16 wrapper">
+    <div className="pt-16">
       <div className="">
         <h1 className="text-center font-medi text-2xl">My Events</h1>
 
-        <div className="py-5 grid md:grid-cols-2 gap-6">
+        <div className="py-5 sm:px-3 md:px-10 container grid md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 gap-6">
           {events?.data.map((event) => {
             return (
               <div
-                className="border-2 rounded-lg p-3 border-green-900 space-y-2"
+                className="border-2  rounded p-3 border-green-900 space-y-2"
                 key={event.event._id}
               >
                 {/* event name  */}
@@ -31,7 +31,7 @@ export const MyEvents = () => {
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3">
                   {/* image  */}
                   <div className="w-28 rounded-xl self-center">
                     <img
@@ -41,7 +41,7 @@ export const MyEvents = () => {
                     />
                   </div>
                   {/* time and description  */}
-                  <div>
+                  <div className=" ">
                     <div className="text-sm font-semibold text-green-700 flex gap-4">
                       <div className="flex gap-1">
                         <IoMdCalendar />
@@ -60,7 +60,7 @@ export const MyEvents = () => {
                   </div>
                 </div>
                 {/* location and status  */}
-                <div className="flex justify-between items-center">
+                <div className="flex sm:gap-2 sm:flex-wrap justify-between items-center">
                   <div className="flex gap-1">
                     <FaLocationDot opacity={0.6} />
                     <span className="text-gray-400 text-sm tracking-tight">
@@ -68,16 +68,17 @@ export const MyEvents = () => {
                     </span>
                   </div>
                   <div className="text-green-900 text-sm flex gap-1">
+                    <FaUsers opacity={0.5} />
                     <span className="text-green-900 font-bld">{event.rsvps.length}</span>
                     <span>Confirmed Guest(s)</span>
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex gap-2 overflow-hidden break-all">
                 <FaLink opacity={0.6}/>
-                  <p className="text-sm text-blue-500"> {event.event.eventLink}</p>
+                  <p className="text-sm text-blue-500"> {(event.event.eventLink)}</p>
                 </div>
-                       
+
               </div>
             );
           })}

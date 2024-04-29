@@ -5,12 +5,12 @@ import {IoMdCalendar} from "react-icons/io";
 
 export function MoreRSVP({closePopup, rsvp}) {
   return (
-    <div className=" mt-28 bg-white shadow-lg border mx-auto w-96">
+    <div className=" mt-28 bg-white shadow-lg border">
       <div className="flex justify-end px-3 mt-2">
          <FaX onClick={closePopup} className=" cursor-pointer" opacity={0.4} size={25}/>
       </div>
      
-      <div className="w-full wrapper h-fit space-y-2 pt-6">
+      <div className="w-full container h-fit space-y-2 pt-6 px-5 py-5">
         
         {/* event name */}
         <div className="flex justify-between items-center">
@@ -70,7 +70,7 @@ export function MoreRSVP({closePopup, rsvp}) {
         <div className="space-y-1 pt-3 text-gray-500">
           <p className="capitalize text-sm">plus one guest names</p>
           {rsvp.plusOne.map((p,i)=>{
-            return <p>{i+1}. {p}</p>
+            return <p key={p._id}>{i+1}. {p}</p>
           })}
         </div>
 

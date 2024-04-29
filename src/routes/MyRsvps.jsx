@@ -20,7 +20,7 @@ export const MyRsvps = () => {
       <div className="">
         <h1 className="text-center font-medi text-2xl">My RSVPs</h1>
 
-        <div className="py-5 grid md:grid-cols-2 gap-6">
+        <div className="py-5 container md:px-10 xl:grid-cols-2 sm:px-5 grid lg:grid-cols-2 md:grid-cols-1 gap-6">
           {rsvps?.data?.map((rsvp) => {
             return (
               <div
@@ -92,8 +92,8 @@ export const MyRsvps = () => {
           })}
         </div>
 
-        <span className="flex justify-end font-lt text-sm text-green-800 underline mt-4 cursor-pointer">
-          More Events
+        <span className="flex justify-end pr-6 font-lt text-sm text-green-800 underline mt-4 cursor-pointer">
+          More Rsvps
         </span>
       </div>
     </div>
