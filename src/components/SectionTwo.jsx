@@ -2,16 +2,16 @@ import {BsArrowDownCircle} from "react-icons/bs";
 
 export function SectionTwo() {
   return (
-    <div className="offwhite h-screen">
+    <div className=" bg-blue-50 h-fit pb-16 flex flex-col justify-center items-center">
       <div className="lg:text-6xl text-5xl text-center mb-2">
         <span className="font-lt opacity-60">0</span>
         <span className="font-smbld pl-1">2</span>
         <span className="text-9xl squaredot pl-1">.</span>
       </div>
-      <h1 className="text-3xl font-reg text-center mb-1">
+      <h1 className="text-2xl font-reg text-center mb-1">
         Fill In Your Event Details
       </h1>
-      <div className="custombr w-80 h-80 lg:w-3/5 lg:h-80 mb-5 p-1 mx-auto">
+      <div className="custombr w-80 h-80 md:w-fit lg:w-fit lg:h-80 mb-5 p-1">
         <img
           src="/images/email-check.jpg"
           alt="fill a form"
@@ -20,7 +20,7 @@ export function SectionTwo() {
       </div>
 
       <div className="flex justify-center mb-2">
-        <button className="customgreen text-white w-80 h-12 border rounded-xl text-xl font-reg">
+        <button className="customgreen text-white w-80 h-12 border rounded text-lg font-reg">
           Create Your Event
         </button>
       </div>

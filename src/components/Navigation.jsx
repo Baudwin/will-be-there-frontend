@@ -14,8 +14,8 @@ export function Navigation() {
   const navigate = useNavigate();
 
   return (
-    <div className={`navbar shadow-lg z-10 sticky bg-white full-bleed`}>
-      <nav className="h-20 w-screen px-10 flex justify-between" id="top">
+    <div className={`navbar shadow-lg z-10 sticky top-0 bg-white full-bleed`}>
+      <nav className=" w-screen px-10 pb-2 flex justify-between items-center" id="top">
         <div className="mt-4 lg:mt-1">
           <Link to={`/`}>
             <Logo />
@@ -56,18 +56,18 @@ export function Navigation() {
             onClick={() => setOpen(!open)}
             className="lg:hidden xl:hidden 2xl:hidden visible z-10 cursor-pointer"
           >
-            <FiMenu size={50} className="mt-1 pt-3" />
+           { !open &&  <FiMenu size={50} className="mt-1 pt-3" />}
           </div>
         </ul>
       </nav>
 
       {open && (
-        <div className="mobile-menu-overlay px-10 fixed lg:hidden  z-20 top-0 right-0 bottom-0 left-0 w-screen leading-10 ">
+        <div className="mobile-menu-overlay px-10 fixed lg:hidden z-20 top-0 right-0 bottom-0 left-0 w-screen leading-10 ">
           <GrClose
             onClick={toggleMenu}
             size={40}
             color="green"
-            className="z-20 cursor-pointer ml-auto mt-6"
+            className="z-20 cursor-pointer ml-auto mt-5"
           />
           <ul className="py-1 mt-10 mb-8 justify-center">
             <li className="rsvp">
@@ -86,8 +86,8 @@ export function Navigation() {
             </li>
           </ul>
 
-          <div>
-            <ul className="flex gap-2 text-lg pb-64">
+          <div className="">
+            <ul className="flex items-center gap-4 text-lg pb-64">
               <li className="self-center">
                 <Link to={`help`} onClick={toggleMenu}>
                   <TfiHelpAlt size={22} />
@@ -98,9 +98,9 @@ export function Navigation() {
                   <IoPersonOutline size={22} />
                 </Link>
               </li>
-              <li className="self-center text-lg uppercase pt-2">
-                <Link to={`login`} onClick={toggleMenu} className="font-smbld">
-                  Login
+              <li className={`self-center text-lg uppercase pt-2 ${user?"text-red-500":"text-blue-500"}`}>
+                <Link to={ user ? `/login` : `/login`  } onClick={toggleMenu} className="font-smbld">
+                  {user ? "Logout": "Login"}
                 </Link>
               </li>
             </ul>

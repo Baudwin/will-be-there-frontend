@@ -36,8 +36,26 @@ export function CreateEvent() {
 
     
   return (
-    <div className="pt-12 sm:px-5 md:px-16 bg-cover w-screen h-screen bg-[url('/background/big-balloon-border.jpg')]">
-      <div className="wrapper">
+    <> 
+   { isPending? 
+
+<div className='fixed inset-0 flex justify-center flex-col gap-2 items-center bg-gray-900 bg-opacity-90 z-50'>
+        
+        <div className="bg-black p-5 rounded">
+             <ClipLoader
+          className='loader'
+          size={60}
+          color=""
+          />
+        </div>
+       
+      </div>
+: 
+null
+}
+    
+    <div className="pt-10 bg-cover w-full h-fit py-4 bg-[url('/background/big-balloon-border.jpg')]">
+      <div className="container sm:px-5 md:px-10">
         <h1 className="text-center lg:text-3xl text-2xl font-bold pb-6">
           Create Your Event
         </h1>
@@ -138,5 +156,6 @@ export function CreateEvent() {
         </div>
       </div>
     </div>
+    </>
   );
 }

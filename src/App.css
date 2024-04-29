@@ -12,9 +12,9 @@
   display: none;
 }
 
-body {
+/* body {
   overflow-x: hidden;
-}
+} */
 
 html {
   color: #031c19;
@@ -43,7 +43,7 @@ img {
   object-fit: cover;
 }
 
-.wrapper {
+/* .wrapper {
   display: grid;
   grid-template-columns:
     1fr
@@ -54,7 +54,7 @@ img {
 
 .wrapper > * {
   grid-column: 2;
-}
+} */
 
 .full-bleed {
   width: 100%;
@@ -68,9 +68,10 @@ img {
 }
 
 .mobile-menu-overlay {
-  overflow: hidden;
+  /* overflow: hidden; */
   touch-action: none;
-  background-image: url("/background/big-balloon-border.jpg");
+  /* background-image: url("/background/big-balloon-border.jpg"); */
+  background-color: #f5f5f5;
   background-size: cover;
 }
 
