@@ -31,17 +31,17 @@ showLoading?
 : 
 null
 }
-    <div className=" sm:px-5 md:px-7 lg:px-5 py-10 w-full bg-cover h-screen bg-[url('/background/big-balloon-border.jpg')] ">
+    <div className=" md:px-7 lg:px-5 py-10 w-full bg-cover h-screen bg-[url('/background/big-balloon-border.jpg')] ">
       
-      <div className="container sm:px-7 ">
-        <div className="flex items-center gap-4">
+      <div className="container sm:px-4">
+        <div className="flex items-center gap-4 sm:gap-2 flex-wrap">
           <span className="bg-black px-14 rounded py-8 border-4 border-white">
           {""}
             <span className="font-bold text-5xl text-white">
               {user? (user?.username).substring(0, 1):null}
             </span>
           </span>
-          <div>
+          <div className="flex flex-col w-fit">
             <h1 className="font-bold text-2xl">{user?.username}</h1>
             <p className="text-blue-700">{user?.email}</p>
             <p className=" font-medium text-gray-600">
