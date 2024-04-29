@@ -6,14 +6,41 @@ import {Logo} from "../utils/Logo";
 import {GrClose} from "react-icons/gr";
 import {FiMenu} from "react-icons/fi";
 import { useAuthStore } from "../../store/useAuthStore";
+import {ClipLoader} from 'react-spinners'
 
 export function Navigation() {
+ 
   const user = useAuthStore((state=>state.user))
+  const logout = useAuthStore((state=>state.logout))
+  const navigate = useNavigate(); 
+  const [showLoading, setShowLoading] = useState(false)
+
+
   const [open, setOpen] = useState(false);
   const toggleMenu = () => setOpen(!open);
-  const navigate = useNavigate();
+  
 
   return (
+    <> 
+
+{
+
+showLoading? 
+
+<div className='fixed inset-0 flex justify-center flex-col gap-2 items-center bg-gray-950 bg-opacity-100 z-50'>
+        
+          <ClipLoader
+          className='loader'
+          size={60}
+          color=""
+          />
+          <p className="text-white text-2xl">Logging out</p>
+      </div>
+
+: 
+null
+}
+
     <div className={`navbar shadow-lg z-10 sticky top-0 bg-white full-bleed`}>
       <nav className=" w-screen px-10 pb-2 flex justify-between items-center" id="top">
         <div className="mt-4 lg:mt-1">
@@ -23,12 +50,12 @@ export function Navigation() {
         </div>
         <ul className="flex justify-between items-center">
           <div className="lg:flex hidden gap-5">
-            <li>
+            <li title="rsvp for an event">
               <Link to={`rsvp/7`} className="uppercase font-medi">
                 RSVP
               </Link>
             </li>
-            <li>
+            <li title="create new event">
               <Link to={ user? `create-event`:`login`} className="uppercase font-medi">
                 Create Event
               </Link>
@@ -41,12 +68,12 @@ export function Navigation() {
                 Login
               </button>
             </li>
-            <li className="icon">
+            <li title="profile" className="icon">
               <Link to={ user ? `profile` : `login`}>
                 <IoPersonOutline size={21} />
               </Link>
             </li>
-            <li className="icon">
+            <li title="help" className="icon">
               <Link to={`help`}>
                 <TfiHelpAlt size={21} />
               </Link>
@@ -72,14 +99,16 @@ export function Navigation() {
           <ul className="py-1 mt-10 mb-8 justify-center">
             <li className="rsvp">
               <Link
-                to={`rsvp`}
-                onClick={toggleMenu}
+                to={`rsvp/7`}
+                onClick={
+                  toggleMenu
+                }
                 className="text-lg uppercase"
               >
                 RSVP
               </Link>
             </li>
-            <li className="text-lg create-event">
+            <li onClick={()=>{user ? navigate("create-event"): navigate("login")}} className="text-lg create-event">
               <Link to={`create-event`} onClick={toggleMenu}>
                 Create Event
               </Link>
@@ -93,13 +122,21 @@ export function Navigation() {
                   <TfiHelpAlt size={22} />
                 </Link>
               </li>
-              <li className="self-center">
+              <li onClick={()=>{user ? navigate("profile"): navigate("login")}}  className="self-center">
                 <Link to={`profile`} onClick={toggleMenu}>
                   <IoPersonOutline size={22} />
                 </Link>
               </li>
-              <li className={`self-center text-lg uppercase pt-2 ${user?"text-red-500":"text-blue-500"}`}>
-                <Link to={ user ? `/login` : `/login`  } onClick={toggleMenu} className="font-smbld">
+              <li onClick={()=>{
+                  logout()
+                  setShowLoading(!showLoading)
+                  setTimeout(() => {
+                  setShowLoading(false)
+                  navigate(`login`)
+
+                  }, 3000);
+              }} className={`self-center text-lg uppercase pt-2 ${user?"text-red-500":"text-blue-500"}`}>
+                <Link  onClick={toggleMenu} className="font-smbld">
                   {user ? "Logout": "Login"}
                 </Link>
               </li>
@@ -112,5 +149,8 @@ export function Navigation() {
         </div>
       )}
     </div>
+
+        
+    </>
   );
 }

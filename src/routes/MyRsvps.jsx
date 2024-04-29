@@ -10,6 +10,11 @@ import { useState } from "react";
 export const MyRsvps = () => {
   const {data:rsvps, isError,error, isLoading} = getUserRsvps()
   const [showPopup, setShowPopUp] = useState(false)
+  const [selectedRSVP, setSelectedRSVP] = useState(null);
+
+  const handleRSVPClick = (rsvp) => {
+    setSelectedRSVP(rsvp);
+  };
 
   const closePopup = ()=>{
     setShowPopUp(!showPopup)
@@ -28,16 +33,22 @@ export const MyRsvps = () => {
                 key={rsvp._id}
               >
               {
-              showPopup && 
-              <div className="fixed inset-0 flex justify-center items-start bg-black bg-opacity-20 z-50">
-                <MoreRSVP rsvp ={rsvp} closePopup={closePopup} />
-
+              showPopup ?
+              selectedRSVP 
+              &&
+              <div className="fixed inset-0 flex justify-center items-start bg-gray-500 bg-opacity-10 z-50">
+                <MoreRSVP rsvp={selectedRSVP} closePopup={closePopup} />
               </div>
+              :null
               } 
                 {/* event name  */}
                 <div className="flex justify-between items-center">
-                  <h1 className="font-bold">{rsvp.eventID.eventName}</h1>
-                  <span onClick={()=>{setShowPopUp(true)}} className="cursor-pointer text-green-900">
+                  <h1 className="font-bold">{rsvp.eventID?.eventName}</h1>
+                  <span onClick={()=>{
+                    handleRSVPClick(rsvp)
+                    setShowPopUp(true)
+
+                    }} className="cursor-pointer text-green-900">
                     <BsThreeDots />
                   </span>
                 </div>
@@ -47,7 +58,7 @@ export const MyRsvps = () => {
                   <div className="w-24 rounded-xl self-center">
                     <img
                       className=""
-                      src={rsvp.eventID.eventImgUrl}
+                      src={rsvp.eventID?.eventImgUrl}
                       alt="event-img"
                     />
                   </div>
@@ -56,16 +67,17 @@ export const MyRsvps = () => {
                     <div className="text-sm font-semibold text-green-700 flex gap-4">
                       <div className="flex gap-1">
                         <IoMdCalendar />
-                        <span>{rsvp.eventID.date}</span>
+                        <span>{rsvp.eventID?.date}</span>
                       </div>
                       <div className="flex gap-1">
                         <BsClockFill />
-                        <span>{rsvp.eventID.time}</span>
+                        <span>{rsvp.eventID?.time}</span>
                       </div>
                     </div>
                     <div>
                       <p className="text-sm">
-                      {rsvp.eventID.description}
+                      {rsvp.eventID?.description}
+                      {/* <span>{rsvp.congratulatoryMessage}</span> */}
                       </p>
                     </div>
                   </div>
@@ -75,7 +87,7 @@ export const MyRsvps = () => {
                   <div className="flex gap-1">
                     <FaLocationDot opacity={0.6} />
                     <span className="text-gray-400 text-sm tracking-tight">
-                    {rsvp.eventID.location}
+                    {rsvp.eventID?.location}
                     </span>
                   </div>
 

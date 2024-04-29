@@ -12,6 +12,8 @@ import {toast} from "react-toastify";
 
 export function SignUp() {
   const {mutate, isPending, isError, error, isSuccess} = registerUser();
+  const[acceptTerms, setAcceptTerms] = useState(false)
+  const[checked, setChecked] = useState(false)
 
   const [userInfo, setUserInfo] = useState({
     username: "",
@@ -26,6 +28,9 @@ export function SignUp() {
   };
 
   const handleRegister = () => {
+    if (!checked) {
+      return toast.warning("You must accept terms and conditions")
+    }
     mutate(userInfo);
   };
 
@@ -95,7 +100,7 @@ export function SignUp() {
         {/* agree to terms */}
         <div className="flex items-center gap-2 px-2 pt-1">
           <div className="mt-1">
-            <input
+            <input onChange={(e)=>setChecked(!checked)}
               className="w-4 h-4"
               type="checkbox"
               name="check"

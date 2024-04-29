@@ -14,7 +14,7 @@ export const RsvpSuccess = () => {
         <img className="" src="/images/cheers.jpeg" alt="success image" />
       </div>
       <p className="capitalize lg:text-2xl text-xl text-center font-lt">
-        your rsvp was successfully created.
+        your rsvp was successful.
       </p>
       <p className="text-gray-700 text-sm text-center">You will recieve a confirmation email shortly. Please check your inbox.</p>
       <div className="flex flex-col justify-center items-center gap-4">

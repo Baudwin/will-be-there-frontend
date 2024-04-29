@@ -4,6 +4,7 @@ import {useAuthStore} from "../../store/useAuthStore";
 import {format} from "date-fns";
 import { useState } from "react";
 import {ClipLoader} from 'react-spinners'
+import { CheckAuth } from "../components/CheckAuth";
 
 export function Profile() {
   const [showLoading, setShowLoading] = useState(false)
@@ -14,11 +15,12 @@ export function Profile() {
 
   return (
     <>
+    <CheckAuth/>
 {
 
 showLoading? 
 
-<div className='fixed inset-0 flex justify-center flex-col gap-2 items-center bg-gray-900 bg-opacity-90 z-50'>
+<div className='fixed inset-0 flex justify-center flex-col gap-2 items-center bg-gray-950 bg-opacity-100 z-50'>
         
           <ClipLoader
           className='loader'
@@ -68,7 +70,6 @@ null
             <Link to={'/my-rsvps'} className="hover:text-blue-500 hover:font-bold" >My RSVPs</Link>
           </div>
         </div>
-
 
 
 <button onClick={()=>{

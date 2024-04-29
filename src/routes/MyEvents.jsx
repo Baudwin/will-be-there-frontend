@@ -1,14 +1,25 @@
-import {AiFillClockCircle} from "react-icons/ai";
+import { useState } from "react";
 import {BsClockFill, BsThreeDots} from "react-icons/bs";
-import {FaCalendar, FaLink, FaUsers} from "react-icons/fa";
+import { FaLink, FaUsers} from "react-icons/fa";
 import {FaLocationDot} from "react-icons/fa6";
 import {IoMdCalendar} from "react-icons/io";
 import { getUserEvents } from "../hooks/useEventData";
 import { Link } from "react-router-dom";
+import { MoreEvent } from "../components/MoreEvent";
 
 export const MyEvents = () => {
   const {data:events, isError,error, isLoading} = getUserEvents()
- 
+  const [showPopup, setShowPopUp] = useState(false)
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  
+  const handleEventClick = (rsvp) => {
+    setSelectedEvent(rsvp);
+  };
+
+  const closePopup = ()=>{
+    setShowPopUp(!showPopup)
+  }
+
   return (
   
     <div className="pt-16">
@@ -22,13 +33,30 @@ export const MyEvents = () => {
                 className="border-2  rounded p-3 border-green-900 space-y-2"
                 key={event.event._id}
               >
+              
+                     {
+               showPopup ?
+               selectedEvent 
+               &&
+               <div className="fixed inset-0 flex justify-center items-start bg-gray-500 bg-opacity-10 z-50">
+                 <MoreEvent event={selectedEvent} closePopup={closePopup} />
+               </div>
+               :null
+              } 
+
+
                 {/* event name  */}
                 <div className="flex justify-between items-center">
                   <h1 className="font-bold">{event.event.eventName}</h1>
 
-                  <span className="cursor-pointer text-green-900">
-                    <BsThreeDots />
+                  <span onClick={()=>{
+                     handleEventClick(event)
+                    setShowPopUp(true)
+                  
+                    }} className="cursor-pointer text-green-900">
+                    <BsThreeDots size={26} />
                   </span>
+
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3">

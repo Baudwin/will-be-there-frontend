@@ -75,7 +75,7 @@ export function LogIn() {
         </div>
 
         {/* agree to terms */}
-        <div className="flex items-center gap-2 px-2 pt-1">
+        {/* <div className="flex items-center gap-2 px-2 pt-1">
           <div className="mt-1">
             <input
               className="w-4 h-4"
@@ -89,7 +89,7 @@ export function LogIn() {
             I Agree To the{" "}
             <span className="text-green-800"> terms & conditions</span>
           </p>
-        </div>
+        </div> */}
 
         {/* continue button  */}
         <div className="flex justify-center">

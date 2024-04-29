@@ -37,15 +37,14 @@ const handleRsvp  = ()=>{
   mutate(rsvpInfo)
 }
 
-
-// if (!data) {
-//   return <div className="lg:wrapper xl:wrapper py-10 sm:px-5 md:px-10 bg-cover w-screen bg-[url('/background/big-balloon-border.jpg')]">
-//     <div className="flex gap-2 justify-center mt-20 mb-52">
-//     <input onChange={(e)=>setLink(e.target.value)} type="text" value={link} className="border focus:outline-none sm:flex-1 p-3 w-1/3 sm:w-full" placeholder="Please Enter event link" name="link" id="" />
-//     <a href={link} className="px-10 py-3 hover:bg-green-700 bg-green-900 text-white font-semibold">Submit</a>
-//   </div>
-//   </div> 
-// }
+if (!data) {
+  return <div className=" py-10 sm:px-5 md:px-10 bg-cover w-screen offwhite">
+    <div className="flex lg:container xl:container gap-2 justify-center mt-20 mb-52">
+    <input onChange={(e)=>setLink(e.target.value)} type="text" value={link} className="border focus:outline-none sm:flex-1 p-3 w-1/3 sm:w-full" placeholder="Please Enter event link" name="link" id="" />
+    <a href={link} className="px-10 py-3 hover:bg-green-700 bg-green-900 text-white font-semibold">Submit</a>
+  </div>
+  </div> 
+}
 
 
 

@@ -14,14 +14,14 @@ export function MoreRSVP({closePopup, rsvp}) {
         
         {/* event name */}
         <div className="flex justify-between items-center">
-          <h1 className="font-bold">{rsvp.eventID.eventName}</h1>
+          <h1 className="font-bold">{rsvp.eventID?.eventName}</h1>
         </div>
 
    {/* image  */}
               <div className="w-24 rounded-xl self-center">
                     <img
                       className=""
-                      src={rsvp.eventID.eventImgUrl}
+                      src={rsvp.eventID?.eventImgUrl}
                       alt="event-img"
                     />
                   </div>
@@ -32,7 +32,7 @@ export function MoreRSVP({closePopup, rsvp}) {
             <div className="flex gap-1">
               <FaLocationDot opacity={0.6} />
               <span className="text-gray-400 text-sm tracking-tight">
-              {rsvp.eventID.location}
+              {rsvp.eventID?.location}
               </span>
             </div>
             
@@ -48,7 +48,7 @@ export function MoreRSVP({closePopup, rsvp}) {
         {/* description */}
         <div>
           <p className="text-sm text-gray-500 font-lt pt-4 pb-4">
-          {rsvp.eventID.description}
+          {rsvp.eventID?.description}
           </p>
         </div>
 
@@ -56,11 +56,11 @@ export function MoreRSVP({closePopup, rsvp}) {
         <div className="text-sm font-semibold text-gray-600 flex gap-4 pb-4">
           <div className="flex gap-1">
             <IoMdCalendar />
-            <span>{rsvp.eventID.date}</span>
+            <span>{rsvp.eventID?.date}</span>
           </div>
           <div className="flex gap-1">
             <BsClockFill />
-            <span>{rsvp.eventID.time}</span>
+            <span>{rsvp.eventID?.time}</span>
           </div>
         </div>
 
@@ -70,7 +70,7 @@ export function MoreRSVP({closePopup, rsvp}) {
         <div className="space-y-1 pt-3 text-gray-500">
           <p className="capitalize text-sm">plus one guest names</p>
           {rsvp.plusOne.map((p,i)=>{
-            return <p key={p._id}>{i+1}. {p}</p>
+            return <p key={i}>{i+1}. {p}</p>
           })}
         </div>
 
