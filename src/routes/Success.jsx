@@ -1,9 +1,13 @@
 import {useNavigate} from "react-router-dom";
+import { ScrollToTop } from "../components/ScrollToTop";
 
 export const Success = () => {
   const navigate = useNavigate()
 
   return (
+    <>
+    
+   <ScrollToTop/>
     <div className="wrapper pt-16">
       <div className="space-y-4">
         <h1 className="lg:text-3xl text-xl text-center font-medi tracking-tight">
@@ -26,5 +30,6 @@ export const Success = () => {
         </div>
       </div>
     </div>
+ </>    
   );
 };

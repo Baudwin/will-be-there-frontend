@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import {registerUser} from "../hooks/useUserData";
 import {toast} from "react-toastify";
+import { ScrollToTop } from "../components/ScrollToTop";
 
 export function SignUp() {
   const user = useAuthStore((state=>state.user))
@@ -45,6 +46,8 @@ export function SignUp() {
   };
 
   return (
+    <>
+    <ScrollToTop/>
     <div className="py-16 bg-cover w-full h-screen bg-[url('background/big-balloon-border.jpg')]">
       <div className="container space-y-5 lg:w-96 w-80 m-auto">
         <h1 className="font-bold text-2xl text-center py-6">
@@ -148,5 +151,6 @@ export function SignUp() {
         </div>
       </div>
     </div>
+    </>
   );
 }

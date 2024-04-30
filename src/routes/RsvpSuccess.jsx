@@ -1,10 +1,13 @@
 import {useNavigate} from "react-router-dom";
 import { useAuthStore } from "../../store/useAuthStore";
+import { ScrollToTop } from "../components/ScrollToTop";
 
 export const RsvpSuccess = () => {
     const navigate = useNavigate()
     const user = useAuthStore(state=>state.user)
   return (
+    <>
+    <ScrollToTop/>
     <div className="wrapper pt-16">
     <div className="space-y-4">
       <h1 className="lg:text-3xl text-xl text-center font-medi tracking-tight">
@@ -71,5 +74,6 @@ export const RsvpSuccess = () => {
       </div>
     </div>
   </div>
+  </>
   )
 }

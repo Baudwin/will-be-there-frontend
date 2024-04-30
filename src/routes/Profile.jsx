@@ -5,6 +5,7 @@ import {format} from "date-fns";
 import { useState } from "react";
 import {ClipLoader} from 'react-spinners'
 import { CheckAuth } from "../components/CheckAuth";
+import { ScrollToTop } from "../components/ScrollToTop";
 
 export function Profile() {
   const [showLoading, setShowLoading] = useState(false)
@@ -16,6 +17,7 @@ export function Profile() {
   return (
     <>
     <CheckAuth/>
+    <ScrollToTop/>
 {
 
 showLoading? 

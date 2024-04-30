@@ -2,6 +2,7 @@ import {useState} from "react";
 import { createNewEvent } from "../hooks/useEventData";
 import {ClipLoader} from 'react-spinners'
 import { CheckAuth } from "../components/CheckAuth";
+import { ScrollToTop } from "../components/ScrollToTop";
 
 export function CreateEvent() {
   const {mutate, isPending, isError,error} = createNewEvent()
@@ -40,7 +41,7 @@ export function CreateEvent() {
   return (
     <> 
     <CheckAuth/>
-
+<ScrollToTop/>
    { isPending? 
 
 <div className='fixed inset-0 flex justify-center flex-col gap-2 items-center bg-gray-900 bg-opacity-90 z-50'>
