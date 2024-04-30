@@ -12,7 +12,7 @@ export function MoreEvent({event, closePopup}) {
     <CheckAuth/>
   
 
-    <div className="h-screen w-screen shadow-lg px-2 border  bg-white ">
+    <div className="h-screen w-screen px-2 border  bg-white ">
       <div className="flex justify-end px-3 mt-2">
          <FaX onClick={closePopup} className=" cursor-pointer" opacity={0.7} size={25}/>
       </div>
@@ -56,9 +56,9 @@ export function MoreEvent({event, closePopup}) {
           </p>
         </div>
         
-        <div className="space-y-1 overflow-x-scroll">
+        <div className="space-y-1 overflow-x-scroll overflow-y-scroll ">
           {/* <p className="capitalize text-sm font-smbld">guest details</p> */}
-          <table className="table-auto border w-full sm:w-96 space-y-1">
+          <table className="table-auto border w-full  sm:w-96 space-y-1">
             <thead className="bg-gray-200 text-sm h-12">
               <tr className="border border-b-2">
                 <th className="border w-10 border-gray-300">#</th>
