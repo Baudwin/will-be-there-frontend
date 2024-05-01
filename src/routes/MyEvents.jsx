@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { MoreEvent } from "../components/MoreEvent";
 import { CheckAuth } from "../components/CheckAuth";
 import { ScrollToTop } from "../components/ScrollToTop";
+import { Default, DualRing } from "react-awesome-spinners";
 
 export const MyEvents = () => {
   const {data:events, isError,error, isLoading} = getUserEvents()
@@ -29,6 +30,15 @@ export const MyEvents = () => {
     <div className="pt-16">
       <div className="">
         <h1 className="text-center font-medi text-2xl">My Events</h1>
+
+        {
+            isLoading ?
+            <div className="flex justify-center mt-7">
+               <DualRing color="black"  />
+            </div>
+             : 
+             null
+          }
 
         <div className="py-5 sm:px-3 md:px-10 container grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-6">
           {events?.data?.map((event) => {

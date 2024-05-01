@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {useAuthStore} from "../../store/useAuthStore";
 import {format} from "date-fns";
 import { useState } from "react";
-import {ClipLoader} from 'react-spinners'
+import {  DualRing } from 'react-awesome-spinners'
 import { CheckAuth } from "../components/CheckAuth";
 import { ScrollToTop } from "../components/ScrollToTop";
 
@@ -18,16 +18,18 @@ export function Profile() {
     <>
     <CheckAuth/>
     <ScrollToTop/>
+
 {
 
 showLoading? 
 
 <div className='fixed inset-0 flex justify-center flex-col gap-2 items-center bg-gray-950 bg-opacity-100 z-50'>
         
-          <ClipLoader
+          <DualRing
           className='loader'
-          size={60}
-          color=""
+          size="60"
+          color="white"
+    
           />
           <p className="text-white text-2xl">Logging out</p>
       </div>

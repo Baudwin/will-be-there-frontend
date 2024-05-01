@@ -7,6 +7,7 @@ import {GrClose} from "react-icons/gr";
 import {FiMenu} from "react-icons/fi";
 import { useAuthStore } from "../../store/useAuthStore";
 import {ClipLoader} from 'react-spinners'
+import { DualRing } from "react-awesome-spinners";
 
 export function Navigation() {
  
@@ -29,10 +30,10 @@ showLoading?
 
 <div className='fixed inset-0 flex justify-center flex-col gap-2 items-center bg-gray-950 bg-opacity-100 z-50'>
         
-          <ClipLoader
+          <DualRing
           className='loader'
           size={60}
-          color=""
+          color="white"
           />
           <p className="text-white text-2xl">Logging out</p>
       </div>

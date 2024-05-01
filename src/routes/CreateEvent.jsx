@@ -68,7 +68,7 @@ null
           {/* Event info  */}
           <div className="flex flex-col space-y-1">
             <label className="font-lt text-gray-500" htmlFor="guest">
-              Event name
+              Event name <span className="text-green-600 text-xl">*</span>
             </label>
             <input  onChange = {handleChange}
               className="border-b-2 border-gray-400 bg-inherit focus:outline-none w-full"
@@ -83,7 +83,7 @@ null
           <div className="grid grid-cols-2 gap-8">
             <div className="flex flex-col space-y-1">
               <label className=" font-lt text-gray-500" htmlFor="date">
-                Date <span className="text-green-800 text-xl">*</span>
+                Date <span className="text-green-600 text-xl">*</span>
               </label>
               <input onChange = {handleChange}
                 className="border-b-2 border-gray-400 bg-inherit focus:outline-none w-full text-xl text-gray-300"
@@ -97,7 +97,7 @@ null
 
             <div className="flex flex-col space-y-1">
               <label className=" font-lt text-gray-500" htmlFor="time">
-                Time <span className="text-green-800 text-xl ">*</span>
+                Time <span className="text-green-600 text-xl ">*</span>
               </label>
               <input onChange = {handleChange}
                 className="border-b-2 border-gray-400 bg-inherit focus:outline-none w-full text-xl text-gray-300"
@@ -125,7 +125,7 @@ null
 
           <div className="flex flex-col space-y-1">
             <label className="font-lt text-gray-500" htmlFor="guest">
-              Location
+              Location <span className="text-green-600 text-xl">*</span>
             </label>
             <input onChange = {handleChange}
               className="border-b-2 border-gray-400 bg-inherit focus:outline-none w-full"
@@ -155,6 +155,7 @@ null
           {/* submit button  */}
           <div className="flex justify-center pt-3">
             <button onClick={createEvent} className="bg-green-900 hover:text-green-900 hover:bg-white text-white uppercase px-20 py-2 font-bold shadow-lg rounded-full">
+              
               Submit
             </button>
           </div>

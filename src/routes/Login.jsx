@@ -9,6 +9,7 @@ import {
 import {loginUser} from "../hooks/useUserData";
 import {useEffect, useState} from "react";
 import { ScrollToTop } from "../components/ScrollToTop";
+import {ClipLoader} from 'react-spinners'
 
 export function LogIn() {
   const user = useAuthStore((state=>state.user))
@@ -90,10 +91,14 @@ if (user) {
         {/* continue button  */}
         <div className="flex justify-center">
           <button
+            disabled={isPending}
             onClick={handleLogin}
-            className="bg-green-900 hover:bg-white hover:border-none hover:text-green-900 px-20 py-2 rounded-2xl font-medi text-white shadow"
+            className="bg-green-900 flex gap-2 items-center hover:bg-green-800 hover:border-none px-20 py-2 rounded-2xl font-medi text-white shadow"
           >
-            Continue
+           
+              { isPending && <ClipLoader className="mb-1.5" color="white" speedMultiplier={3} size="21px"/>}
+            
+           <span>Continue</span> 
           </button>
         </div>
 

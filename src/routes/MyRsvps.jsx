@@ -7,6 +7,7 @@ import { MoreRSVP } from "../components/MoreRSVP";
 import { useState } from "react";
 import { CheckAuth } from "../components/CheckAuth";
 import { ScrollToTop } from "../components/ScrollToTop";
+import { Default, DualRing } from "react-awesome-spinners";
 
 
 export const MyRsvps = () => {
@@ -25,16 +26,27 @@ export const MyRsvps = () => {
     <> 
  <CheckAuth/>
 <ScrollToTop/>
+
     <div onClick={()=>{ showPopup ?  setShowPopUp(false): null}}  className="pt-16 wrapper">
  
       <div className="">
         <h1 className="text-center font-medi text-2xl">My RSVPs</h1>
 
+          {
+            isLoading ?
+            <div className="flex justify-center mt-10">
+               <DualRing color="black"  />
+            </div>
+             : 
+             null
+          }
+
         <div className="py-5 container md:px-10 xl:grid-cols-2 sm:px-5 grid lg:grid-cols-2 md:grid-cols-1 gap-6">
+          
           {rsvps?.data?.map((rsvp) => {
             return (
               <div
-                className={`border-2 rounded-lg p-3  space-y-3 border-green-900`}
+                className={`border-2 rounded-lg p-3 border-green-900`}
                 key={rsvp._id}
               >
               {
@@ -46,6 +58,8 @@ export const MyRsvps = () => {
               </div>
               :null
               } 
+
+              <div className=" space-y-3">
                 {/* event name  */}
                 <div className="flex justify-between items-center">
                   <h1 className="font-bold">{rsvp.eventID?.eventName}</h1>
@@ -104,6 +118,8 @@ export const MyRsvps = () => {
                     </span>
                   </div>
                 </div>
+                </div>
+
               </div>
             );
           })}

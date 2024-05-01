@@ -11,6 +11,7 @@ import {
 import {registerUser} from "../hooks/useUserData";
 import {toast} from "react-toastify";
 import { ScrollToTop } from "../components/ScrollToTop";
+import {ClipLoader} from 'react-spinners'
 
 export function SignUp() {
   const user = useAuthStore((state=>state.user))
@@ -130,10 +131,12 @@ export function SignUp() {
         {/* continue button  */}
         <div className="flex justify-center">
           <button
+            disabled={isPending}
             onClick={handleRegister}
-            className="bg-green-900 hover:bg-white border-gray-500 hover:text-green-900 px-20 py-2 rounded-2xl font-medi text-white shadow hover:transform-none"
+            className="bg-green-900 flex gap-2 items-center hover:bg-green-800 border-gray-500 hover:text-green-900 px-20 py-2 rounded-2xl font-medi text-white shadow hover:transform-none"
           >
-            Continue
+              { isPending && <ClipLoader className="mb-1.5" color="white" speedMultiplier={3} size="21px"/>}
+            <span>Continue</span> 
           </button>
         </div>
 
